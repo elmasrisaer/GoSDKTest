@@ -18,7 +18,7 @@ func NewRestClient[T any](config celitechconfig.Config, manager *configmanager.C
 	responseValidationHandler := handlers.NewResponseValidationHandler[T]()
 	unmarshalHandler := handlers.NewUnmarshalHandler[T]()
 	requestValidationHandler := handlers.NewRequestValidationHandler[T]()
-	hookHandler := handlers.NewHookHandler[T](hooks.NewCustomHook())
+	hookHandler := handlers.NewHookHandler[T](hooks.NewDefaultHook())
 	terminatingHandler := handlers.NewTerminatingHandler[T]()
 
 	handlers := handlers.BuildHandlerChain[T]().
