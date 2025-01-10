@@ -1,14 +1,14 @@
 package packages
 
 type ListPackagesRequestParams struct {
-	Destination *string  `queryParam:"destination"`
-	StartDate   *string  `queryParam:"startDate"`
-	EndDate     *string  `queryParam:"endDate"`
-	AfterCursor *string  `queryParam:"afterCursor"`
-	Limit       *float64 `queryParam:"limit"`
-	StartTime   *int64   `queryParam:"startTime"`
-	EndTime     *int64   `queryParam:"endTime"`
-	Duration    *float64 `queryParam:"duration"`
+	Destination *string  `explode:"true" serializationStyle:"form" queryParam:"destination"`
+	StartDate   *string  `explode:"true" serializationStyle:"form" queryParam:"startDate"`
+	EndDate     *string  `explode:"true" serializationStyle:"form" queryParam:"endDate"`
+	AfterCursor *string  `explode:"true" serializationStyle:"form" queryParam:"afterCursor"`
+	Limit       *float64 `explode:"true" serializationStyle:"form" queryParam:"limit"`
+	StartTime   *int64   `explode:"true" serializationStyle:"form" queryParam:"startTime"`
+	EndTime     *int64   `explode:"true" serializationStyle:"form" queryParam:"endTime"`
+	Duration    *float64 `explode:"true" serializationStyle:"form" queryParam:"duration"`
 }
 
 func (params *ListPackagesRequestParams) SetDestination(destination string) {

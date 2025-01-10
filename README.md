@@ -1,4 +1,4 @@
-# Celitech Go SDK 1.0.1
+# Celitech Go SDK 1.0.2
 
 Welcome to the Celitech SDK documentation. This guide will help you get started with integrating and using the Celitech SDK in your project.
 
@@ -7,7 +7,7 @@ Welcome to the Celitech SDK documentation. This guide will help you get started 
 ## Versions
 
 - API version: `1.1.0`
-- SDK version: `1.0.1`
+- SDK version: `1.0.2`
 
 ## About the API
 

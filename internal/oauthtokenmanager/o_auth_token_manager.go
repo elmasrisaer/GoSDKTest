@@ -12,7 +12,7 @@ type OAuthTokenManager struct {
 }
 
 type TokenService interface {
-	GetOAuthAccessToken(config oauthsdkconfig.Config, scopes []string) (GetOAuthAccessTokenResponse, error)
+	GetOAuthAccessToken(config celitechconfig.Config, scopes []string) (GetOAuthAccessTokenResponse, error)
 }
 
 type GetOAuthAccessTokenResponse interface {

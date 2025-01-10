@@ -1,14 +1,14 @@
 package purchases
 
 type ListPurchasesRequestParams struct {
-	Iccid       *string  `maxLength:"22" minLength:"18" queryParam:"iccid"`
-	AfterDate   *string  `queryParam:"afterDate"`
-	BeforeDate  *string  `queryParam:"beforeDate"`
-	ReferenceId *string  `queryParam:"referenceId"`
-	AfterCursor *string  `queryParam:"afterCursor"`
-	Limit       *float64 `queryParam:"limit"`
-	After       *float64 `queryParam:"after"`
-	Before      *float64 `queryParam:"before"`
+	Iccid       *string  `explode:"true" serializationStyle:"form" maxLength:"22" minLength:"18" queryParam:"iccid"`
+	AfterDate   *string  `explode:"true" serializationStyle:"form" queryParam:"afterDate"`
+	BeforeDate  *string  `explode:"true" serializationStyle:"form" queryParam:"beforeDate"`
+	ReferenceId *string  `explode:"true" serializationStyle:"form" queryParam:"referenceId"`
+	AfterCursor *string  `explode:"true" serializationStyle:"form" queryParam:"afterCursor"`
+	Limit       *float64 `explode:"true" serializationStyle:"form" queryParam:"limit"`
+	After       *float64 `explode:"true" serializationStyle:"form" queryParam:"after"`
+	Before      *float64 `explode:"true" serializationStyle:"form" queryParam:"before"`
 }
 
 func (params *ListPurchasesRequestParams) SetIccid(iccid string) {
