@@ -8,7 +8,6 @@ import (
 	"github.com/elmasrisaer/GoSDKTest/internal/oauthtokenmanager"
 	"github.com/elmasrisaer/GoSDKTest/pkg/celitechconfig"
 	"github.com/elmasrisaer/GoSDKTest/pkg/shared"
-	"strings"
 	"time"
 )
 
@@ -63,6 +62,7 @@ func (api *OAuthService) GetAccessToken(ctx context.Context, getAccessTokenReque
 		AddHeader("CONTENT-TYPE", "application/x-www-form-urlencoded").
 		WithContentType(httptransport.ContentTypeFormUrlEncoded).
 		WithResponseContentType(httptransport.ContentTypeJson).
+		WithScopes(nil).
 		Build()
 
 	client := restClient.NewRestClient[GetAccessTokenOkResponse](config, api.manager)
@@ -82,7 +82,7 @@ func (api *OAuthService) GetOAuthAccessToken(config celitechconfig.Config, scope
 			ClientId:     config.ClientId,
 			ClientSecret: config.ClientSecret,
 		},
-		undefined{})
+	)
 
 	if err != nil {
 		return nil, err

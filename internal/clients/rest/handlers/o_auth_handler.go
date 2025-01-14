@@ -33,7 +33,7 @@ func (h *OAuthHandler[T]) Handle(request httptransport.Request) (*httptransport.
 }
 
 func (h *OAuthHandler[T]) addToken(request httptransport.Request) error {
-	if len(request.Scopes) == 0 {
+	if request.Scopes == nil {
 		return nil
 	}
 
