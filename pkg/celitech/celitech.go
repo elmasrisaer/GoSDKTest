@@ -26,12 +26,15 @@ func NewCelitech(config celitechconfig.Config) *Celitech {
 	packages := packages.NewPackagesService()
 	purchases := purchases.NewPurchasesService()
 	eSim := esim.NewESimService()
+
 	manager := configmanager.NewConfigManager(config, oAuth)
 	oAuth.WithConfigManager(manager)
+	oAuth.SetBaseUrl("https://auth.celitech.net")
 	destinations.WithConfigManager(manager)
 	packages.WithConfigManager(manager)
 	purchases.WithConfigManager(manager)
 	eSim.WithConfigManager(manager)
+
 	return &Celitech{
 		OAuth:        oAuth,
 		Destinations: destinations,
