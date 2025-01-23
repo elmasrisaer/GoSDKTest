@@ -1,6 +1,8 @@
 package shared
 
 import (
+	"encoding/json"
+
 	"github.com/elmasrisaer/GoSDKTest/internal/clients/rest/httptransport"
 )
 
@@ -26,4 +28,12 @@ func NewCelitechResponse[T any](resp *httptransport.Response[T]) *CelitechRespon
 
 func (r *CelitechResponse[T]) GetData() T {
 	return r.Data
+}
+
+func (r CelitechResponse[T]) String() string {
+	jsonData, err := json.MarshalIndent(r, "", "  ")
+	if err != nil {
+		return "error converting struct: CelitechResponse to string"
+	}
+	return string(jsonData)
 }

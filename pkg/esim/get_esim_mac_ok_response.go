@@ -31,6 +31,7 @@ func (g *GetEsimMacOkResponse) SetEsimNil() {
 	g.touched["Esim"] = true
 	g.Esim = nil
 }
+
 func (g GetEsimMacOkResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -41,6 +42,14 @@ func (g GetEsimMacOkResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (g GetEsimMacOkResponse) String() string {
+	jsonData, err := json.MarshalIndent(g, "", "  ")
+	if err != nil {
+		return "error converting struct: GetEsimMacOkResponse to string"
+	}
+	return string(jsonData)
 }
 
 type GetEsimMacOkResponseEsim struct {
@@ -121,6 +130,7 @@ func (g *GetEsimMacOkResponseEsim) SetManualActivationCodeNil() {
 	g.touched["ManualActivationCode"] = true
 	g.ManualActivationCode = nil
 }
+
 func (g GetEsimMacOkResponseEsim) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -143,4 +153,12 @@ func (g GetEsimMacOkResponseEsim) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (g GetEsimMacOkResponseEsim) String() string {
+	jsonData, err := json.MarshalIndent(g, "", "  ")
+	if err != nil {
+		return "error converting struct: GetEsimMacOkResponseEsim to string"
+	}
+	return string(jsonData)
 }

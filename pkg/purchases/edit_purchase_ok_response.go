@@ -132,6 +132,7 @@ func (e *EditPurchaseOkResponse) SetNewEndTimeNil() {
 	e.touched["NewEndTime"] = true
 	e.NewEndTime = nil
 }
+
 func (e EditPurchaseOkResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -166,4 +167,12 @@ func (e EditPurchaseOkResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (e EditPurchaseOkResponse) String() string {
+	jsonData, err := json.MarshalIndent(e, "", "  ")
+	if err != nil {
+		return "error converting struct: EditPurchaseOkResponse to string"
+	}
+	return string(jsonData)
 }

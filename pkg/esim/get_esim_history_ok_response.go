@@ -31,6 +31,7 @@ func (g *GetEsimHistoryOkResponse) SetEsimNil() {
 	g.touched["Esim"] = true
 	g.Esim = nil
 }
+
 func (g GetEsimHistoryOkResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -41,6 +42,14 @@ func (g GetEsimHistoryOkResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (g GetEsimHistoryOkResponse) String() string {
+	jsonData, err := json.MarshalIndent(g, "", "  ")
+	if err != nil {
+		return "error converting struct: GetEsimHistoryOkResponse to string"
+	}
+	return string(jsonData)
 }
 
 type GetEsimHistoryOkResponseEsim struct {
@@ -95,6 +104,7 @@ func (g *GetEsimHistoryOkResponseEsim) SetHistoryNil() {
 	g.touched["History"] = true
 	g.History = nil
 }
+
 func (g GetEsimHistoryOkResponseEsim) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -111,6 +121,14 @@ func (g GetEsimHistoryOkResponseEsim) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (g GetEsimHistoryOkResponseEsim) String() string {
+	jsonData, err := json.MarshalIndent(g, "", "  ")
+	if err != nil {
+		return "error converting struct: GetEsimHistoryOkResponseEsim to string"
+	}
+	return string(jsonData)
 }
 
 type History struct {
@@ -191,6 +209,7 @@ func (h *History) SetDateNil() {
 	h.touched["Date"] = true
 	h.Date = nil
 }
+
 func (h History) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -213,4 +232,12 @@ func (h History) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (h History) String() string {
+	jsonData, err := json.MarshalIndent(h, "", "  ")
+	if err != nil {
+		return "error converting struct: History to string"
+	}
+	return string(jsonData)
 }

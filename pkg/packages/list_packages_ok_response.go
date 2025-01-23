@@ -56,6 +56,7 @@ func (l *ListPackagesOkResponse) SetAfterCursorNil() {
 	l.touched["AfterCursor"] = true
 	l.AfterCursor = nil
 }
+
 func (l ListPackagesOkResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -72,6 +73,14 @@ func (l ListPackagesOkResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (l ListPackagesOkResponse) String() string {
+	jsonData, err := json.MarshalIndent(l, "", "  ")
+	if err != nil {
+		return "error converting struct: ListPackagesOkResponse to string"
+	}
+	return string(jsonData)
 }
 
 type Packages struct {
@@ -227,6 +236,7 @@ func (p *Packages) SetPriceInCentsNil() {
 	p.touched["PriceInCents"] = true
 	p.PriceInCents = nil
 }
+
 func (p Packages) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -267,4 +277,12 @@ func (p Packages) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (p Packages) String() string {
+	jsonData, err := json.MarshalIndent(p, "", "  ")
+	if err != nil {
+		return "error converting struct: Packages to string"
+	}
+	return string(jsonData)
 }

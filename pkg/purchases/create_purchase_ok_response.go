@@ -55,6 +55,7 @@ func (c *CreatePurchaseOkResponse) SetProfileNil() {
 	c.touched["Profile"] = true
 	c.Profile = nil
 }
+
 func (c CreatePurchaseOkResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -71,6 +72,14 @@ func (c CreatePurchaseOkResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (c CreatePurchaseOkResponse) String() string {
+	jsonData, err := json.MarshalIndent(c, "", "  ")
+	if err != nil {
+		return "error converting struct: CreatePurchaseOkResponse to string"
+	}
+	return string(jsonData)
 }
 
 type CreatePurchaseOkResponsePurchase struct {
@@ -251,6 +260,7 @@ func (c *CreatePurchaseOkResponsePurchase) SetEndTimeNil() {
 	c.touched["EndTime"] = true
 	c.EndTime = nil
 }
+
 func (c CreatePurchaseOkResponsePurchase) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -297,6 +307,14 @@ func (c CreatePurchaseOkResponsePurchase) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (c CreatePurchaseOkResponsePurchase) String() string {
+	jsonData, err := json.MarshalIndent(c, "", "  ")
+	if err != nil {
+		return "error converting struct: CreatePurchaseOkResponsePurchase to string"
+	}
+	return string(jsonData)
 }
 
 type CreatePurchaseOkResponseProfile struct {
@@ -377,6 +395,7 @@ func (c *CreatePurchaseOkResponseProfile) SetManualActivationCodeNil() {
 	c.touched["ManualActivationCode"] = true
 	c.ManualActivationCode = nil
 }
+
 func (c CreatePurchaseOkResponseProfile) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -399,4 +418,12 @@ func (c CreatePurchaseOkResponseProfile) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (c CreatePurchaseOkResponseProfile) String() string {
+	jsonData, err := json.MarshalIndent(c, "", "  ")
+	if err != nil {
+		return "error converting struct: CreatePurchaseOkResponseProfile to string"
+	}
+	return string(jsonData)
 }

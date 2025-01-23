@@ -57,6 +57,7 @@ func (g *GetPurchaseConsumptionOkResponse) SetStatusNil() {
 	g.touched["Status"] = true
 	g.Status = nil
 }
+
 func (g GetPurchaseConsumptionOkResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -73,4 +74,12 @@ func (g GetPurchaseConsumptionOkResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (g GetPurchaseConsumptionOkResponse) String() string {
+	jsonData, err := json.MarshalIndent(g, "", "  ")
+	if err != nil {
+		return "error converting struct: GetPurchaseConsumptionOkResponse to string"
+	}
+	return string(jsonData)
 }

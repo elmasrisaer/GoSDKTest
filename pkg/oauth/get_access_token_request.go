@@ -79,6 +79,7 @@ func (g *GetAccessTokenRequest) SetClientSecretNil() {
 	g.touched["ClientSecret"] = true
 	g.ClientSecret = nil
 }
+
 func (g GetAccessTokenRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -101,6 +102,14 @@ func (g GetAccessTokenRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (g GetAccessTokenRequest) String() string {
+	jsonData, err := json.MarshalIndent(g, "", "  ")
+	if err != nil {
+		return "error converting struct: GetAccessTokenRequest to string"
+	}
+	return string(jsonData)
 }
 
 type GrantType string

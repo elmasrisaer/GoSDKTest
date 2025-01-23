@@ -56,6 +56,7 @@ func (l *ListPurchasesOkResponse) SetAfterCursorNil() {
 	l.touched["AfterCursor"] = true
 	l.AfterCursor = nil
 }
+
 func (l ListPurchasesOkResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -72,6 +73,14 @@ func (l ListPurchasesOkResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (l ListPurchasesOkResponse) String() string {
+	jsonData, err := json.MarshalIndent(l, "", "  ")
+	if err != nil {
+		return "error converting struct: ListPurchasesOkResponse to string"
+	}
+	return string(jsonData)
 }
 
 type Purchases struct {
@@ -350,6 +359,7 @@ func (p *Purchases) SetReferenceIdNil() {
 	p.touched["ReferenceId"] = true
 	p.ReferenceId = nil
 }
+
 func (p Purchases) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -420,6 +430,14 @@ func (p Purchases) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (p Purchases) String() string {
+	jsonData, err := json.MarshalIndent(p, "", "  ")
+	if err != nil {
+		return "error converting struct: Purchases to string"
+	}
+	return string(jsonData)
 }
 
 type Package_ struct {
@@ -550,6 +568,7 @@ func (p *Package_) SetPriceInCentsNil() {
 	p.touched["PriceInCents"] = true
 	p.PriceInCents = nil
 }
+
 func (p Package_) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -586,6 +605,14 @@ func (p Package_) MarshalJSON() ([]byte, error) {
 	return json.Marshal(data)
 }
 
+func (p Package_) String() string {
+	jsonData, err := json.MarshalIndent(p, "", "  ")
+	if err != nil {
+		return "error converting struct: Package_ to string"
+	}
+	return string(jsonData)
+}
+
 type PurchasesEsim struct {
 	// ID of the eSIM
 	Iccid   *string `json:"iccid,omitempty" maxLength:"22" minLength:"18"`
@@ -614,6 +641,7 @@ func (p *PurchasesEsim) SetIccidNil() {
 	p.touched["Iccid"] = true
 	p.Iccid = nil
 }
+
 func (p PurchasesEsim) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -624,4 +652,12 @@ func (p PurchasesEsim) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (p PurchasesEsim) String() string {
+	jsonData, err := json.MarshalIndent(p, "", "  ")
+	if err != nil {
+		return "error converting struct: PurchasesEsim to string"
+	}
+	return string(jsonData)
 }

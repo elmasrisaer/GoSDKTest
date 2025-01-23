@@ -31,6 +31,7 @@ func (l *ListDestinationsOkResponse) SetDestinationsNil() {
 	l.touched["Destinations"] = true
 	l.Destinations = nil
 }
+
 func (l ListDestinationsOkResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -41,6 +42,14 @@ func (l ListDestinationsOkResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (l ListDestinationsOkResponse) String() string {
+	jsonData, err := json.MarshalIndent(l, "", "  ")
+	if err != nil {
+		return "error converting struct: ListDestinationsOkResponse to string"
+	}
+	return string(jsonData)
 }
 
 type Destinations struct {
@@ -121,6 +130,7 @@ func (d *Destinations) SetSupportedCountriesNil() {
 	d.touched["SupportedCountries"] = true
 	d.SupportedCountries = nil
 }
+
 func (d Destinations) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -143,4 +153,12 @@ func (d Destinations) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (d Destinations) String() string {
+	jsonData, err := json.MarshalIndent(d, "", "  ")
+	if err != nil {
+		return "error converting struct: Destinations to string"
+	}
+	return string(jsonData)
 }

@@ -79,6 +79,7 @@ func (g *GetAccessTokenOkResponse) SetExpiresInNil() {
 	g.touched["ExpiresIn"] = true
 	g.ExpiresIn = nil
 }
+
 func (g GetAccessTokenOkResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -101,4 +102,12 @@ func (g GetAccessTokenOkResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (g GetAccessTokenOkResponse) String() string {
+	jsonData, err := json.MarshalIndent(g, "", "  ")
+	if err != nil {
+		return "error converting struct: GetAccessTokenOkResponse to string"
+	}
+	return string(jsonData)
 }
