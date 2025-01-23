@@ -31,6 +31,7 @@ func (g *GetEsimDeviceOkResponse) SetDeviceNil() {
 	g.touched["Device"] = true
 	g.Device = nil
 }
+
 func (g GetEsimDeviceOkResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -41,6 +42,14 @@ func (g GetEsimDeviceOkResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (g GetEsimDeviceOkResponse) String() string {
+	jsonData, err := json.MarshalIndent(g, "", "  ")
+	if err != nil {
+		return "error converting struct: GetEsimDeviceOkResponse to string"
+	}
+	return string(jsonData)
 }
 
 type Device struct {
@@ -146,6 +155,7 @@ func (d *Device) SetEidNil() {
 	d.touched["Eid"] = true
 	d.Eid = nil
 }
+
 func (d Device) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -174,4 +184,12 @@ func (d Device) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (d Device) String() string {
+	jsonData, err := json.MarshalIndent(d, "", "  ")
+	if err != nil {
+		return "error converting struct: Device to string"
+	}
+	return string(jsonData)
 }

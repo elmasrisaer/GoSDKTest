@@ -1,17 +1,63 @@
 {
-  "liblabVersion": "2.10.9",
-  "date": "2025-01-14T09:59:16.714Z",
+  "liblabVersion": "2.10.10",
+  "date": "2025-01-23T14:18:16.875Z",
   "config": {
     "language": "go",
-    "apiId": 1663,
+    "apiId": 1692,
     "sdkName": "Celitech",
-    "sdkVersion": "1.0.4",
+    "sdkVersion": "1.0.5",
     "languages": ["go"],
     "auth": ["oauth"],
     "docs": ["snippets"],
     "liblabVersion": "2",
     "deliveryMethods": ["zip"],
-    "apiVersion": "1.0.4",
+    "rawConfig": {
+      "sdkName": "Celitech",
+      "apiName": "Celitech",
+      "apiVersion": "1.0.5",
+      "specFilePath": "swagger.yaml",
+      "languages": ["go"],
+      "docs": ["snippets"],
+      "auth": ["oauth"],
+      "customizations": {
+        "devContainer": true,
+        "generateEnv": true,
+        "inferServiceNames": false,
+        "includeOptionalSnippetParameters": false,
+        "injectedModels": [],
+        "license": {
+          "type": "MIT"
+        },
+        "responseHeaders": false,
+        "retry": {
+          "enabled": true,
+          "maxAttempts": 3,
+          "retryDelay": 150
+        },
+        "environmentVariables": [
+          {
+            "name": "CLIENT_ID",
+            "description": "Client ID parameter"
+          },
+          {
+            "name": "CLIENT_SECRET",
+            "description": "Client Secret parameter"
+          }
+        ]
+      },
+      "languageOptions": {
+        "go": {
+          "githubRepoName": "GoSDKTest",
+          "sdkVersion": "1.0.5",
+          "liblabVersion": "2",
+          "goModuleName": "github.com/elmasrisaer/GoSDKTest"
+        }
+      },
+      "publishing": {
+        "githubOrg": "elmasrisaer"
+      }
+    },
+    "apiVersion": "1.0.5",
     "apiName": "Celitech",
     "specFilePath": "swagger.yaml",
     "languageOptions": {
@@ -19,7 +65,7 @@
         "goModuleName": "github.com/elmasrisaer/GoSDKTest",
         "githubRepoName": "GoSDKTest",
         "liblabVersion": "2",
-        "sdkVersion": "1.0.4"
+        "sdkVersion": "1.0.5"
       }
     },
     "publishing": {

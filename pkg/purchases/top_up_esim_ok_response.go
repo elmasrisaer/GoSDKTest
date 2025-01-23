@@ -55,6 +55,7 @@ func (t *TopUpEsimOkResponse) SetProfileNil() {
 	t.touched["Profile"] = true
 	t.Profile = nil
 }
+
 func (t TopUpEsimOkResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -71,6 +72,14 @@ func (t TopUpEsimOkResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (t TopUpEsimOkResponse) String() string {
+	jsonData, err := json.MarshalIndent(t, "", "  ")
+	if err != nil {
+		return "error converting struct: TopUpEsimOkResponse to string"
+	}
+	return string(jsonData)
 }
 
 type TopUpEsimOkResponsePurchase struct {
@@ -251,6 +260,7 @@ func (t *TopUpEsimOkResponsePurchase) SetEndTimeNil() {
 	t.touched["EndTime"] = true
 	t.EndTime = nil
 }
+
 func (t TopUpEsimOkResponsePurchase) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -299,6 +309,14 @@ func (t TopUpEsimOkResponsePurchase) MarshalJSON() ([]byte, error) {
 	return json.Marshal(data)
 }
 
+func (t TopUpEsimOkResponsePurchase) String() string {
+	jsonData, err := json.MarshalIndent(t, "", "  ")
+	if err != nil {
+		return "error converting struct: TopUpEsimOkResponsePurchase to string"
+	}
+	return string(jsonData)
+}
+
 type TopUpEsimOkResponseProfile struct {
 	// ID of the eSIM
 	Iccid   *string `json:"iccid,omitempty" maxLength:"22" minLength:"18"`
@@ -327,6 +345,7 @@ func (t *TopUpEsimOkResponseProfile) SetIccidNil() {
 	t.touched["Iccid"] = true
 	t.Iccid = nil
 }
+
 func (t TopUpEsimOkResponseProfile) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -337,4 +356,12 @@ func (t TopUpEsimOkResponseProfile) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (t TopUpEsimOkResponseProfile) String() string {
+	jsonData, err := json.MarshalIndent(t, "", "  ")
+	if err != nil {
+		return "error converting struct: TopUpEsimOkResponseProfile to string"
+	}
+	return string(jsonData)
 }

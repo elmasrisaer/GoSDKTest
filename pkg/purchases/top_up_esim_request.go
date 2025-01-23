@@ -207,6 +207,7 @@ func (t *TopUpEsimRequest) SetEndTimeNil() {
 	t.touched["EndTime"] = true
 	t.EndTime = nil
 }
+
 func (t TopUpEsimRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -259,4 +260,12 @@ func (t TopUpEsimRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (t TopUpEsimRequest) String() string {
+	jsonData, err := json.MarshalIndent(t, "", "  ")
+	if err != nil {
+		return "error converting struct: TopUpEsimRequest to string"
+	}
+	return string(jsonData)
 }
