@@ -12,6 +12,7 @@ type ConfigManager struct {
 	Packages          celitechconfig.Config
 	Purchases         celitechconfig.Config
 	ESim              celitechconfig.Config
+	IFrame            celitechconfig.Config
 	oAuthTokenManager *oauthtokenmanager.OAuthTokenManager
 }
 
@@ -22,6 +23,7 @@ func NewConfigManager(config celitechconfig.Config, tokenService oauthtokenmanag
 		Packages:          config,
 		Purchases:         config,
 		ESim:              config,
+		IFrame:            config,
 		oAuthTokenManager: oauthtokenmanager.NewOAuthTokenManager(tokenService),
 	}
 }
@@ -32,6 +34,7 @@ func (c *ConfigManager) SetBaseUrl(baseUrl string) {
 	c.Packages.SetBaseUrl(baseUrl)
 	c.Purchases.SetBaseUrl(baseUrl)
 	c.ESim.SetBaseUrl(baseUrl)
+	c.IFrame.SetBaseUrl(baseUrl)
 }
 
 func (c *ConfigManager) SetTimeout(timeout time.Duration) {
@@ -40,6 +43,7 @@ func (c *ConfigManager) SetTimeout(timeout time.Duration) {
 	c.Packages.SetTimeout(timeout)
 	c.Purchases.SetTimeout(timeout)
 	c.ESim.SetTimeout(timeout)
+	c.IFrame.SetTimeout(timeout)
 }
 
 func (c *ConfigManager) SetClientId(clientId string) {
@@ -48,6 +52,7 @@ func (c *ConfigManager) SetClientId(clientId string) {
 	c.Packages.SetClientId(clientId)
 	c.Purchases.SetClientId(clientId)
 	c.ESim.SetClientId(clientId)
+	c.IFrame.SetClientId(clientId)
 }
 
 func (c *ConfigManager) SetClientSecret(clientSecret string) {
@@ -56,6 +61,7 @@ func (c *ConfigManager) SetClientSecret(clientSecret string) {
 	c.Packages.SetClientSecret(clientSecret)
 	c.Purchases.SetClientSecret(clientSecret)
 	c.ESim.SetClientSecret(clientSecret)
+	c.IFrame.SetClientSecret(clientSecret)
 }
 
 func (c *ConfigManager) GetTokenManager() *oauthtokenmanager.OAuthTokenManager {
@@ -76,4 +82,7 @@ func (c *ConfigManager) GetPurchases() *celitechconfig.Config {
 }
 func (c *ConfigManager) GetESim() *celitechconfig.Config {
 	return &c.ESim
+}
+func (c *ConfigManager) GetIFrame() *celitechconfig.Config {
+	return &c.IFrame
 }

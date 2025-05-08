@@ -49,6 +49,30 @@ func (api *PurchasesService) SetClientSecret(clientSecret string) {
 	config.SetClientSecret(clientSecret)
 }
 
+// This endpoint is used to purchase a new eSIM by providing the package details.
+func (api *PurchasesService) CreatePurchaseV2(ctx context.Context, createPurchaseV2Request CreatePurchaseV2Request) (*shared.CelitechResponse[[]CreatePurchaseV2OkResponse], *shared.CelitechError) {
+	config := *api.getConfig()
+
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/purchases/v2").
+		WithConfig(config).
+		WithBody(createPurchaseV2Request).
+		AddHeader("CONTENT-TYPE", "application/json").
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		WithScopes([]string{}).
+		Build()
+
+	client := restClient.NewRestClient[[]CreatePurchaseV2OkResponse](config, api.manager)
+	resp, err := client.Call(*request)
+	if err != nil {
+		return nil, shared.NewCelitechError[[]CreatePurchaseV2OkResponse](err)
+	}
+
+	return shared.NewCelitechResponse[[]CreatePurchaseV2OkResponse](resp), nil
+}
+
 // This endpoint can be used to list all the successful purchases made between a given interval.
 func (api *PurchasesService) ListPurchases(ctx context.Context, params ListPurchasesRequestParams) (*shared.CelitechResponse[ListPurchasesOkResponse], *shared.CelitechError) {
 	config := *api.getConfig()
@@ -96,7 +120,7 @@ func (api *PurchasesService) CreatePurchase(ctx context.Context, createPurchaseR
 	return shared.NewCelitechResponse[CreatePurchaseOkResponse](resp), nil
 }
 
-// This endpoint is used to top-up an eSIM with the previously associated destination by providing an existing ICCID and the package details. The top-up is not feasible for eSIMs in "DELETED" or "ERROR" state.
+// This endpoint is used to top-up an eSIM with the previously associated destination by providing an existing ICCID and the package details. The top-up is only feasible for eSIMs in "ENABLED" or "INSTALLED" state. You can check this state using the Get eSIM Status endpoint.
 func (api *PurchasesService) TopUpEsim(ctx context.Context, topUpEsimRequest TopUpEsimRequest) (*shared.CelitechResponse[TopUpEsimOkResponse], *shared.CelitechError) {
 	config := *api.getConfig()
 
@@ -120,7 +144,7 @@ func (api *PurchasesService) TopUpEsim(ctx context.Context, topUpEsimRequest Top
 	return shared.NewCelitechResponse[TopUpEsimOkResponse](resp), nil
 }
 
-// This endpoint allows you to modify the dates of an existing package with a future activation start time. Editing can only be performed for packages that have not been activated, and it cannot change the package size. The modification must not change the package duration category to ensure pricing consistency.
+// This endpoint allows you to modify the dates of an existing package with a future activation start time. Editing can only be performed for packages that have not been activated, and it cannot change the package size. The modification must not change the package duration category to ensure pricing consistency. Duration based packages cannot be edited.
 func (api *PurchasesService) EditPurchase(ctx context.Context, editPurchaseRequest EditPurchaseRequest) (*shared.CelitechResponse[EditPurchaseOkResponse], *shared.CelitechError) {
 	config := *api.getConfig()
 

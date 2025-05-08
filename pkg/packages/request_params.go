@@ -1,14 +1,16 @@
 package packages
 
 type ListPackagesRequestParams struct {
-	Destination *string  `explode:"true" serializationStyle:"form" queryParam:"destination"`
-	StartDate   *string  `explode:"true" serializationStyle:"form" queryParam:"startDate"`
-	EndDate     *string  `explode:"true" serializationStyle:"form" queryParam:"endDate"`
-	AfterCursor *string  `explode:"true" serializationStyle:"form" queryParam:"afterCursor"`
-	Limit       *float64 `explode:"true" serializationStyle:"form" queryParam:"limit"`
-	StartTime   *int64   `explode:"true" serializationStyle:"form" queryParam:"startTime"`
-	EndTime     *int64   `explode:"true" serializationStyle:"form" queryParam:"endTime"`
-	Duration    *float64 `explode:"true" serializationStyle:"form" queryParam:"duration"`
+	Destination      *string  `explode:"true" serializationStyle:"form" queryParam:"destination"`
+	StartDate        *string  `explode:"true" serializationStyle:"form" queryParam:"startDate"`
+	EndDate          *string  `explode:"true" serializationStyle:"form" queryParam:"endDate"`
+	DataLimitInGb    *float64 `explode:"true" serializationStyle:"form" queryParam:"dataLimitInGB"`
+	IncludeUnlimited *bool    `explode:"true" serializationStyle:"form" queryParam:"includeUnlimited"`
+	AfterCursor      *string  `explode:"true" serializationStyle:"form" queryParam:"afterCursor"`
+	Limit            *float64 `explode:"true" serializationStyle:"form" queryParam:"limit"`
+	StartTime        *int64   `explode:"true" serializationStyle:"form" queryParam:"startTime"`
+	EndTime          *int64   `explode:"true" serializationStyle:"form" queryParam:"endTime"`
+	Duration         *float64 `explode:"true" serializationStyle:"form" queryParam:"duration"`
 }
 
 func (params *ListPackagesRequestParams) SetDestination(destination string) {
@@ -19,6 +21,12 @@ func (params *ListPackagesRequestParams) SetStartDate(startDate string) {
 }
 func (params *ListPackagesRequestParams) SetEndDate(endDate string) {
 	params.EndDate = &endDate
+}
+func (params *ListPackagesRequestParams) SetDataLimitInGb(dataLimitInGb float64) {
+	params.DataLimitInGb = &dataLimitInGb
+}
+func (params *ListPackagesRequestParams) SetIncludeUnlimited(includeUnlimited bool) {
+	params.IncludeUnlimited = &includeUnlimited
 }
 func (params *ListPackagesRequestParams) SetAfterCursor(afterCursor string) {
 	params.AfterCursor = &afterCursor

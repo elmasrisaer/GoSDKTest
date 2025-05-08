@@ -1,11 +1,11 @@
 {
-  "liblabVersion": "2.10.10",
-  "date": "2025-01-23T14:18:16.875Z",
+  "liblabVersion": "2.25.14",
+  "date": "2025-05-08T09:54:58.137Z",
   "config": {
     "language": "go",
-    "apiId": 1692,
+    "apiId": 2155,
     "sdkName": "Celitech",
-    "sdkVersion": "1.0.5",
+    "sdkVersion": "1.0.6",
     "languages": ["go"],
     "auth": ["oauth"],
     "docs": ["snippets"],
@@ -14,7 +14,7 @@
     "rawConfig": {
       "sdkName": "Celitech",
       "apiName": "Celitech",
-      "apiVersion": "1.0.5",
+      "apiVersion": "1.0.6",
       "specFilePath": "swagger.yaml",
       "languages": ["go"],
       "docs": ["snippets"],
@@ -27,6 +27,11 @@
         "injectedModels": [],
         "license": {
           "type": "MIT"
+        },
+        "authentication": {
+          "oauth": {
+            "enabled": true
+          }
         },
         "responseHeaders": false,
         "retry": {
@@ -48,7 +53,7 @@
       "languageOptions": {
         "go": {
           "githubRepoName": "GoSDKTest",
-          "sdkVersion": "1.0.5",
+          "sdkVersion": "1.0.6",
           "liblabVersion": "2",
           "goModuleName": "github.com/elmasrisaer/GoSDKTest"
         }
@@ -57,7 +62,7 @@
         "githubOrg": "elmasrisaer"
       }
     },
-    "apiVersion": "1.0.5",
+    "apiVersion": "1.0.6",
     "apiName": "Celitech",
     "specFilePath": "swagger.yaml",
     "languageOptions": {
@@ -65,11 +70,18 @@
         "goModuleName": "github.com/elmasrisaer/GoSDKTest",
         "githubRepoName": "GoSDKTest",
         "liblabVersion": "2",
-        "sdkVersion": "1.0.5"
+        "sdkVersion": "1.0.6"
       }
     },
+    "generateMCP": false,
     "publishing": {
       "githubOrg": "elmasrisaer"
+    },
+    "authentication": {
+      "oauth": {
+        "enabled": true,
+        "basic": false
+      }
     },
     "devContainer": true,
     "environmentVariables": [
@@ -103,11 +115,6 @@
       "httpCodesToRetry": [408, 429, 500, 502, 503, 504],
       "httpMethodsToRetry": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"]
     },
-    "authentication": {
-      "oauth": {
-        "enabled": true
-      }
-    },
     "multiTenant": true,
     "includeWatermark": false,
     "goModuleName": "github.com/elmasrisaer/GoSDKTest",
@@ -122,7 +129,7 @@
     "httpLibrary": {
       "name": "axios",
       "packages": {
-        "axios": "^1.7.7"
+        "axios": "^1.7.9"
       },
       "languages": ["typescript"]
     },
@@ -131,7 +138,8 @@
       "rawQueries": [],
       "queriesData": []
     },
-    "ai": false
+    "ai": false,
+    "specType": "openapi"
   },
   "files": [
     "internal/validation/validate_array_length.go",
@@ -148,6 +156,7 @@
     "pkg/packages/packages_service.go",
     "pkg/purchases/purchases_service.go",
     "pkg/esim/e_sim_service.go",
+    "pkg/iframe/i_frame_service.go",
     "internal/clients/rest/client.go",
     "internal/utils/utils.go",
     "internal/clients/rest/httptransport/request.go",
@@ -183,6 +192,7 @@
     "documentation/snippets/oauth2-token-post.md",
     "documentation/snippets/destinations-get.md",
     "documentation/snippets/packages-get.md",
+    "documentation/snippets/purchases-v2-post.md",
     "documentation/snippets/purchases-get.md",
     "documentation/snippets/purchases-post.md",
     "documentation/snippets/purchases-topup-post.md",
@@ -192,12 +202,15 @@
     "documentation/snippets/esim-{iccid}-device-get.md",
     "documentation/snippets/esim-{iccid}-history-get.md",
     "documentation/snippets/esim-{iccid}-mac-get.md",
+    "documentation/snippets/iframe-token-post.md",
     "documentation/models/get_access_token_ok_response.md",
+    "documentation/models/create_purchase_v2_request.md",
     "documentation/models/create_purchase_request.md",
     "documentation/models/top_up_esim_request.md",
     "documentation/models/edit_purchase_request.md",
     "documentation/models/edit_purchase_ok_response.md",
     "documentation/models/get_purchase_consumption_ok_response.md",
+    "documentation/models/token_ok_response.md",
     ".devcontainer/devcontainer.json",
     "internal/clients/rest/httptransport/content-type.go",
     "internal/clients/rest/httptransport/request-builder.go",
@@ -215,12 +228,16 @@
     "internal/oauthtokenmanager/o_auth_token_manager.go",
     "internal/clients/rest/handlers/o_auth_handler.go",
     "internal/serialization/serialize_object.go",
+    "pkg/util/nullable.go",
+    "pkg/util/to_pointer.go",
     "pkg/oauth/get_access_token_ok_response.go",
+    "pkg/purchases/create_purchase_v2_request.go",
     "pkg/purchases/create_purchase_request.go",
     "pkg/purchases/top_up_esim_request.go",
     "pkg/purchases/edit_purchase_request.go",
     "pkg/purchases/edit_purchase_ok_response.go",
     "pkg/purchases/get_purchase_consumption_ok_response.go",
+    "pkg/iframe/token_ok_response.go",
     "documentation/models/get_access_token_request.md",
     "documentation/models/list_destinations_ok_response.md",
     "documentation/models/list_packages_ok_response.md",
@@ -230,6 +247,8 @@
     "documentation/services/o_auth_service.md",
     "documentation/services/destinations_service.md",
     "documentation/services/packages_service.md",
+    "documentation/services/i_frame_service.md",
+    "documentation/models/create_purchase_v2_ok_response.md",
     "documentation/models/create_purchase_ok_response.md",
     "documentation/models/top_up_esim_ok_response.md",
     "documentation/models/get_esim_history_ok_response.md",
@@ -240,6 +259,7 @@
     "pkg/esim/get_esim_device_ok_response.go",
     "pkg/esim/get_esim_mac_ok_response.go",
     "documentation/models/list_purchases_ok_response.md",
+    "pkg/purchases/create_purchase_v2_ok_response.go",
     "pkg/purchases/create_purchase_ok_response.go",
     "pkg/purchases/top_up_esim_ok_response.go",
     "pkg/esim/get_esim_history_ok_response.go",

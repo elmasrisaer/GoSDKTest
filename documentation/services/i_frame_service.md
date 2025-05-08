@@ -1,17 +1,17 @@
-# DestinationsService
+# IFrameService
 
-A list of all methods in the `DestinationsService` service. Click on the method name to view detailed information about that method.
+A list of all methods in the `IFrameService` service. Click on the method name to view detailed information about that method.
 
-| Methods                               | Description       |
-| :------------------------------------ | :---------------- |
-| [ListDestinations](#listdestinations) | List Destinations |
+| Methods         | Description                                   |
+| :-------------- | :-------------------------------------------- |
+| [Token](#token) | Generate a new token to be used in the iFrame |
 
-## ListDestinations
+## Token
 
-List Destinations
+Generate a new token to be used in the iFrame
 
-- HTTP Method: `GET`
-- Endpoint: `/destinations`
+- HTTP Method: `POST`
+- Endpoint: `/iframe/token`
 
 **Parameters**
 
@@ -21,7 +21,7 @@ List Destinations
 
 **Return Type**
 
-`ListDestinationsOkResponse`
+`TokenOkResponse`
 
 **Example Usage Code Snippet**
 
@@ -37,7 +37,7 @@ import (
 config := celitechconfig.NewConfig()
 client := celitech.NewCelitech(config)
 
-response, err := client.Destinations.ListDestinations(context.Background())
+response, err := client.IFrame.Token(context.Background())
 if err != nil {
   panic(err)
 }

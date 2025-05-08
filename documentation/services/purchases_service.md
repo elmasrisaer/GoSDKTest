@@ -2,13 +2,61 @@
 
 A list of all methods in the `PurchasesService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                           | Description                                                                                                                                                                                                                                                                                                            |
-| :------------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [ListPurchases](#listpurchases)                   | This endpoint can be used to list all the successful purchases made between a given interval.                                                                                                                                                                                                                          |
-| [CreatePurchase](#createpurchase)                 | This endpoint is used to purchase a new eSIM by providing the package details.                                                                                                                                                                                                                                         |
-| [TopUpEsim](#topupesim)                           | This endpoint is used to top-up an eSIM with the previously associated destination by providing an existing ICCID and the package details. The top-up is not feasible for eSIMs in "DELETED" or "ERROR" state.                                                                                                         |
-| [EditPurchase](#editpurchase)                     | This endpoint allows you to modify the dates of an existing package with a future activation start time. Editing can only be performed for packages that have not been activated, and it cannot change the package size. The modification must not change the package duration category to ensure pricing consistency. |
-| [GetPurchaseConsumption](#getpurchaseconsumption) | This endpoint can be called for consumption notifications (e.g. every 1 hour or when the user clicks a button). It returns the data balance (consumption) of purchased packages.                                                                                                                                       |
+| Methods                                           | Description                                                                                                                                                                                                                                                                                                                                                      |
+| :------------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [CreatePurchaseV2](#createpurchasev2)             | This endpoint is used to purchase a new eSIM by providing the package details.                                                                                                                                                                                                                                                                                   |
+| [ListPurchases](#listpurchases)                   | This endpoint can be used to list all the successful purchases made between a given interval.                                                                                                                                                                                                                                                                    |
+| [TopUpEsim](#topupesim)                           | This endpoint is used to top-up an eSIM with the previously associated destination by providing an existing ICCID and the package details. The top-up is only feasible for eSIMs in "ENABLED" or "INSTALLED" state. You can check this state using the Get eSIM Status endpoint.                                                                                 |
+| [EditPurchase](#editpurchase)                     | This endpoint allows you to modify the dates of an existing package with a future activation start time. Editing can only be performed for packages that have not been activated, and it cannot change the package size. The modification must not change the package duration category to ensure pricing consistency. Duration based packages cannot be edited. |
+| [GetPurchaseConsumption](#getpurchaseconsumption) | This endpoint can be called for consumption notifications (e.g. every 1 hour or when the user clicks a button). It returns the data balance (consumption) of purchased packages.                                                                                                                                                                                 |
+
+## CreatePurchaseV2
+
+This endpoint is used to purchase a new eSIM by providing the package details.
+
+- HTTP Method: `POST`
+- Endpoint: `/purchases/v2`
+
+**Parameters**
+
+| Name                    | Type                    | Required | Description                 |
+| :---------------------- | :---------------------- | :------- | :-------------------------- |
+| ctx                     | Context                 | ✅       | Default go language context |
+| createPurchaseV2Request | CreatePurchaseV2Request | ✅       |                             |
+
+**Return Type**
+
+`[]CreatePurchaseV2OkResponse`
+
+**Example Usage Code Snippet**
+
+```go
+import (
+  "fmt"
+  "encoding/json"
+  "github.com/elmasrisaer/GoSDKTest/pkg/celitechconfig"
+  "github.com/elmasrisaer/GoSDKTest/pkg/celitech"
+  "github.com/elmasrisaer/GoSDKTest/pkg/util"
+  "github.com/elmasrisaer/GoSDKTest/pkg/purchases"
+)
+
+config := celitechconfig.NewConfig()
+client := celitech.NewCelitech(config)
+
+
+request := purchases.CreatePurchaseV2Request{
+  Destination: util.ToPointer("Destination"),
+  DataLimitInGb: util.ToPointer(float64(123)),
+  Quantity: util.ToPointer(float64(123)),
+}
+
+response, err := client.Purchases.CreatePurchaseV2(context.Background(), request)
+if err != nil {
+  panic(err)
+}
+
+fmt.Println(response)
+```
 
 ## ListPurchases
 
@@ -36,6 +84,7 @@ import (
   "encoding/json"
   "github.com/elmasrisaer/GoSDKTest/pkg/celitechconfig"
   "github.com/elmasrisaer/GoSDKTest/pkg/celitech"
+
   "github.com/elmasrisaer/GoSDKTest/pkg/purchases"
 )
 
@@ -43,8 +92,9 @@ config := celitechconfig.NewConfig()
 client := celitech.NewCelitech(config)
 
 
-params := purchases.ListPurchasesRequestParams{}
+params := purchases.ListPurchasesRequestParams{
 
+}
 
 response, err := client.Purchases.ListPurchases(context.Background(), params)
 if err != nil {
@@ -54,56 +104,9 @@ if err != nil {
 fmt.Println(response)
 ```
 
-## CreatePurchase
-
-This endpoint is used to purchase a new eSIM by providing the package details.
-
-- HTTP Method: `POST`
-- Endpoint: `/purchases`
-
-**Parameters**
-
-| Name                  | Type                  | Required | Description                 |
-| :-------------------- | :-------------------- | :------- | :-------------------------- |
-| ctx                   | Context               | ✅       | Default go language context |
-| createPurchaseRequest | CreatePurchaseRequest | ✅       |                             |
-
-**Return Type**
-
-`CreatePurchaseOkResponse`
-
-**Example Usage Code Snippet**
-
-```go
-import (
-  "fmt"
-  "encoding/json"
-  "github.com/elmasrisaer/GoSDKTest/pkg/celitechconfig"
-  "github.com/elmasrisaer/GoSDKTest/pkg/celitech"
-  "github.com/elmasrisaer/GoSDKTest/pkg/purchases"
-)
-
-config := celitechconfig.NewConfig()
-client := celitech.NewCelitech(config)
-
-
-request := purchases.CreatePurchaseRequest{}
-request.SetDestination("Destination")
-request.SetDataLimitInGb(float64(123))
-request.SetStartDate("StartDate")
-request.SetEndDate("EndDate")
-
-response, err := client.Purchases.CreatePurchase(context.Background(), request)
-if err != nil {
-  panic(err)
-}
-
-fmt.Println(response)
-```
-
 ## TopUpEsim
 
-This endpoint is used to top-up an eSIM with the previously associated destination by providing an existing ICCID and the package details. The top-up is not feasible for eSIMs in "DELETED" or "ERROR" state.
+This endpoint is used to top-up an eSIM with the previously associated destination by providing an existing ICCID and the package details. The top-up is only feasible for eSIMs in "ENABLED" or "INSTALLED" state. You can check this state using the Get eSIM Status endpoint.
 
 - HTTP Method: `POST`
 - Endpoint: `/purchases/topup`
@@ -127,6 +130,7 @@ import (
   "encoding/json"
   "github.com/elmasrisaer/GoSDKTest/pkg/celitechconfig"
   "github.com/elmasrisaer/GoSDKTest/pkg/celitech"
+  "github.com/elmasrisaer/GoSDKTest/pkg/util"
   "github.com/elmasrisaer/GoSDKTest/pkg/purchases"
 )
 
@@ -134,11 +138,10 @@ config := celitechconfig.NewConfig()
 client := celitech.NewCelitech(config)
 
 
-request := purchases.TopUpEsimRequest{}
-request.SetIccid("Iccid")
-request.SetDataLimitInGb(float64(123))
-request.SetStartDate("StartDate")
-request.SetEndDate("EndDate")
+request := purchases.TopUpEsimRequest{
+  Iccid: util.ToPointer("Iccid"),
+  DataLimitInGb: util.ToPointer(float64(123)),
+}
 
 response, err := client.Purchases.TopUpEsim(context.Background(), request)
 if err != nil {
@@ -150,7 +153,7 @@ fmt.Println(response)
 
 ## EditPurchase
 
-This endpoint allows you to modify the dates of an existing package with a future activation start time. Editing can only be performed for packages that have not been activated, and it cannot change the package size. The modification must not change the package duration category to ensure pricing consistency.
+This endpoint allows you to modify the dates of an existing package with a future activation start time. Editing can only be performed for packages that have not been activated, and it cannot change the package size. The modification must not change the package duration category to ensure pricing consistency. Duration based packages cannot be edited.
 
 - HTTP Method: `POST`
 - Endpoint: `/purchases/edit`
@@ -174,6 +177,7 @@ import (
   "encoding/json"
   "github.com/elmasrisaer/GoSDKTest/pkg/celitechconfig"
   "github.com/elmasrisaer/GoSDKTest/pkg/celitech"
+  "github.com/elmasrisaer/GoSDKTest/pkg/util"
   "github.com/elmasrisaer/GoSDKTest/pkg/purchases"
 )
 
@@ -181,10 +185,11 @@ config := celitechconfig.NewConfig()
 client := celitech.NewCelitech(config)
 
 
-request := purchases.EditPurchaseRequest{}
-request.SetPurchaseId("PurchaseId")
-request.SetStartDate("StartDate")
-request.SetEndDate("EndDate")
+request := purchases.EditPurchaseRequest{
+  PurchaseId: util.ToPointer("PurchaseId"),
+  StartDate: util.ToPointer("StartDate"),
+  EndDate: util.ToPointer("EndDate"),
+}
 
 response, err := client.Purchases.EditPurchase(context.Background(), request)
 if err != nil {
@@ -220,6 +225,7 @@ import (
   "encoding/json"
   "github.com/elmasrisaer/GoSDKTest/pkg/celitechconfig"
   "github.com/elmasrisaer/GoSDKTest/pkg/celitech"
+
 )
 
 config := celitechconfig.NewConfig()
