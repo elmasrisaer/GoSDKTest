@@ -5,6 +5,7 @@ import (
 	"github.com/elmasrisaer/GoSDKTest/pkg/celitechconfig"
 	"github.com/elmasrisaer/GoSDKTest/pkg/destinations"
 	"github.com/elmasrisaer/GoSDKTest/pkg/esim"
+	"github.com/elmasrisaer/GoSDKTest/pkg/iframe"
 	"github.com/elmasrisaer/GoSDKTest/pkg/oauth"
 	"github.com/elmasrisaer/GoSDKTest/pkg/packages"
 	"github.com/elmasrisaer/GoSDKTest/pkg/purchases"
@@ -17,6 +18,7 @@ type Celitech struct {
 	Packages     *packages.PackagesService
 	Purchases    *purchases.PurchasesService
 	ESim         *esim.ESimService
+	IFrame       *iframe.IFrameService
 	manager      *configmanager.ConfigManager
 }
 
@@ -26,6 +28,7 @@ func NewCelitech(config celitechconfig.Config) *Celitech {
 	packages := packages.NewPackagesService()
 	purchases := purchases.NewPurchasesService()
 	eSim := esim.NewESimService()
+	iFrame := iframe.NewIFrameService()
 
 	manager := configmanager.NewConfigManager(config, oAuth)
 	oAuth.WithConfigManager(manager)
@@ -34,6 +37,7 @@ func NewCelitech(config celitechconfig.Config) *Celitech {
 	packages.WithConfigManager(manager)
 	purchases.WithConfigManager(manager)
 	eSim.WithConfigManager(manager)
+	iFrame.WithConfigManager(manager)
 
 	return &Celitech{
 		OAuth:        oAuth,
@@ -41,6 +45,7 @@ func NewCelitech(config celitechconfig.Config) *Celitech {
 		Packages:     packages,
 		Purchases:    purchases,
 		ESim:         eSim,
+		IFrame:       iFrame,
 		manager:      manager,
 	}
 }

@@ -1,4 +1,4 @@
-# Celitech Go SDK 1.0.5
+# Celitech Go SDK 1.0.6
 
 Welcome to the Celitech SDK documentation. This guide will help you get started with integrating and using the Celitech SDK in your project.
 
@@ -6,12 +6,14 @@ Welcome to the Celitech SDK documentation. This guide will help you get started 
 
 ## Versions
 
-- API version: `1.1.0`
-- SDK version: `1.0.5`
+- API version: `1.0.6`
+- SDK version: `1.0.6`
 
 ## About the API
 
-Welcome to the CELITECH API documentation! Useful links: [Homepage](https://www.celitech.com) | [Support email](mailto:support@celitech.com) | [Blog](https://www.celitech.com/blog/)
+Welcome to the CELITECH API documentation!
+
+Useful links: [Homepage](https://www.celitech.com) | [Support email](mailto:support@celitech.com) | [Blog](https://www.celitech.com/blog/)
 
 ## Table of Contents
 
@@ -77,6 +79,7 @@ The SDK provides various services to interact with the API.
 | [PackagesService](documentation/services/packages_service.md)         |
 | [PurchasesService](documentation/services/purchases_service.md)       |
 | [ESimService](documentation/services/e_sim_service.md)                |
+| [IFrameService](documentation/services/i_frame_service.md)            |
 
 </details>
 
@@ -132,6 +135,8 @@ The SDK includes several models that represent the data structures used in API r
 | [GetAccessTokenOkResponse](documentation/models/get_access_token_ok_response.md)                 |             |
 | [ListDestinationsOkResponse](documentation/models/list_destinations_ok_response.md)              |             |
 | [ListPackagesOkResponse](documentation/models/list_packages_ok_response.md)                      |             |
+| [CreatePurchaseV2Request](documentation/models/create_purchase_v2_request.md)                    |             |
+| [CreatePurchaseV2OkResponse](documentation/models/create_purchase_v2_ok_response.md)             |             |
 | [ListPurchasesOkResponse](documentation/models/list_purchases_ok_response.md)                    |             |
 | [CreatePurchaseRequest](documentation/models/create_purchase_request.md)                         |             |
 | [CreatePurchaseOkResponse](documentation/models/create_purchase_ok_response.md)                  |             |
@@ -144,6 +149,7 @@ The SDK includes several models that represent the data structures used in API r
 | [GetEsimDeviceOkResponse](documentation/models/get_esim_device_ok_response.md)                   |             |
 | [GetEsimHistoryOkResponse](documentation/models/get_esim_history_ok_response.md)                 |             |
 | [GetEsimMacOkResponse](documentation/models/get_esim_mac_ok_response.md)                         |             |
+| [TokenOkResponse](documentation/models/token_ok_response.md)                                     |             |
 
 </details>
 

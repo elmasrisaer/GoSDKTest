@@ -10,6 +10,7 @@ import (
 	"github.com/elmasrisaer/GoSDKTest/pkg/celitech"
 	"github.com/elmasrisaer/GoSDKTest/pkg/celitechconfig"
 	"github.com/elmasrisaer/GoSDKTest/pkg/oauth"
+	"github.com/elmasrisaer/GoSDKTest/pkg/util"
 )
 
 func main() {
