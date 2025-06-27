@@ -1,22 +1,22 @@
 {
-  "liblabVersion": "2.25.14",
-  "date": "2025-05-08T09:54:58.137Z",
+  "liblabVersion": "2.25.32",
+  "date": "2025-06-27T10:07:38.843Z",
   "config": {
     "language": "go",
-    "apiId": 2155,
+    "apiId": 2402,
     "sdkName": "Celitech",
-    "sdkVersion": "1.0.6",
+    "sdkVersion": "1.0.7",
     "languages": ["go"],
     "auth": ["oauth"],
     "docs": ["snippets"],
     "liblabVersion": "2",
     "deliveryMethods": ["zip"],
     "rawConfig": {
+      "specFilePath": "swagger.yaml",
       "sdkName": "Celitech",
       "apiName": "Celitech",
-      "apiVersion": "1.0.6",
-      "specFilePath": "swagger.yaml",
-      "languages": ["go"],
+      "apiVersion": "1.0.7",
+      "languages": ["csharp", "go"],
       "docs": ["snippets"],
       "auth": ["oauth"],
       "customizations": {
@@ -53,29 +53,50 @@
       "languageOptions": {
         "go": {
           "githubRepoName": "GoSDKTest",
-          "sdkVersion": "1.0.6",
+          "sdkVersion": "1.0.7",
           "liblabVersion": "2",
           "goModuleName": "github.com/elmasrisaer/GoSDKTest"
+        },
+        "csharp": {
+          "githubRepoName": "CSharpSDKTest",
+          "sdkVersion": "1.0.0",
+          "liblabVersion": "2"
         }
       },
       "publishing": {
         "githubOrg": "elmasrisaer"
       }
     },
-    "apiVersion": "1.0.6",
+    "liblabConfigVersion": "1.0.0",
+    "apiVersion": "1.0.7",
     "apiName": "Celitech",
     "specFilePath": "swagger.yaml",
+    "createDocs": false,
     "languageOptions": {
-      "go": {
-        "goModuleName": "github.com/elmasrisaer/GoSDKTest",
-        "githubRepoName": "GoSDKTest",
+      "csharp": {
+        "githubRepoName": "CSharpSDKTest",
+        "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.0.6"
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "1.0.0"
+      },
+      "go": {
+        "githubRepoName": "GoSDKTest",
+        "ignoreFiles": [],
+        "liblabVersion": "2",
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "1.0.7",
+        "goModuleName": "github.com/elmasrisaer/GoSDKTest"
       }
     },
-    "generateMCP": false,
+    "validationsToIgnore": [],
     "publishing": {
-      "githubOrg": "elmasrisaer"
+      "githubOrg": "elmasrisaer",
+      "platform": "github"
+    },
+    "analytics": {
+      "streaming": false,
+      "pagination": false
     },
     "authentication": {
       "oauth": {
@@ -96,8 +117,6 @@
     ],
     "generateEnv": true,
     "includeOptionalSnippetParameters": false,
-    "inferServiceNames": false,
-    "injectedModels": [],
     "license": {
       "type": "MIT",
       "name": "MIT",
@@ -105,6 +124,7 @@
       "path": "MIT.ejs"
     },
     "responseHeaders": false,
+    "buildAllModels": false,
     "retry": {
       "enabled": true,
       "maxAttempts": 3,
@@ -117,8 +137,10 @@
     },
     "multiTenant": true,
     "includeWatermark": false,
-    "goModuleName": "github.com/elmasrisaer/GoSDKTest",
     "githubRepoName": "GoSDKTest",
+    "ignoreFiles": [],
+    "renameIllegalModelProperties": true,
+    "goModuleName": "github.com/elmasrisaer/GoSDKTest",
     "deliveryMethod": "zip",
     "hooks": {
       "enabled": false,
@@ -126,10 +148,11 @@
     },
     "usesFormData": false,
     "fileOutput": "/tmp",
+    "inferServiceNames": false,
     "httpLibrary": {
       "name": "axios",
       "packages": {
-        "axios": "^1.7.9"
+        "axios": "^1.9.0"
       },
       "languages": ["typescript"]
     },
@@ -187,7 +210,7 @@
     "pkg/shared/celitech_response.go",
     "pkg/shared/celitech_error.go",
     "pkg/celitechconfig/environments.go",
-    "./LICENSE",
+    "LICENSE",
     ".env.example",
     "documentation/snippets/oauth2-token-post.md",
     "documentation/snippets/destinations-get.md",
@@ -230,6 +253,7 @@
     "internal/serialization/serialize_object.go",
     "pkg/util/nullable.go",
     "pkg/util/to_pointer.go",
+    "internal/unmarshal/unmarshal_nullable.go",
     "pkg/oauth/get_access_token_ok_response.go",
     "pkg/purchases/create_purchase_v2_request.go",
     "pkg/purchases/create_purchase_request.go",
