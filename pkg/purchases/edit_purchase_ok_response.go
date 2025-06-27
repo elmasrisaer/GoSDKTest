@@ -2,6 +2,7 @@ package purchases
 
 import (
 	"encoding/json"
+	"github.com/elmasrisaer/GoSDKTest/internal/unmarshal"
 	"github.com/elmasrisaer/GoSDKTest/pkg/util"
 )
 
@@ -95,4 +96,8 @@ func (e EditPurchaseOkResponse) String() string {
 		return "error converting struct: EditPurchaseOkResponse to string"
 	}
 	return string(jsonData)
+}
+
+func (e *EditPurchaseOkResponse) UnmarshalJSON(data []byte) error {
+	return unmarshal.UnmarshalNullable(data, e)
 }

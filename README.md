@@ -1,4 +1,4 @@
-# Celitech Go SDK 1.0.6
+# Celitech Go SDK 1.0.7
 
 Welcome to the Celitech SDK documentation. This guide will help you get started with integrating and using the Celitech SDK in your project.
 
@@ -6,8 +6,8 @@ Welcome to the Celitech SDK documentation. This guide will help you get started 
 
 ## Versions
 
-- API version: `1.0.6`
-- SDK version: `1.0.6`
+- API version: `1.0.7`
+- SDK version: `1.0.7`
 
 ## About the API
 
@@ -43,13 +43,10 @@ The Celitech API uses OAuth for authentication.
 You need to provide the OAuth parameters when initializing the SDK.
 
 ```go
-
-```
-
-If you need to set or update the OAuth parameters after the SDK initialization, you can use:
-
-```go
-
+config := celitechconfigconfig.NewConfig()
+config.SetClientId("CLIENT_ID")
+config.SetClientSecret("CLIENT_SECRET")
+client := celitech.NewCelitech(config)
 ```
 
 ## Environment Variables

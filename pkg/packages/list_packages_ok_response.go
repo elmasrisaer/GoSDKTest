@@ -2,6 +2,7 @@ package packages
 
 import (
 	"encoding/json"
+	"github.com/elmasrisaer/GoSDKTest/internal/unmarshal"
 	"github.com/elmasrisaer/GoSDKTest/pkg/util"
 )
 
@@ -43,6 +44,10 @@ func (l ListPackagesOkResponse) String() string {
 		return "error converting struct: ListPackagesOkResponse to string"
 	}
 	return string(jsonData)
+}
+
+func (l *ListPackagesOkResponse) UnmarshalJSON(data []byte) error {
+	return unmarshal.UnmarshalNullable(data, l)
 }
 
 type Packages struct {
