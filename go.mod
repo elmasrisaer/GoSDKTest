@@ -1,4 +1,6 @@
 module github.com/elmasrisaer/GoSDKTest
 
 
-retract go 1.18
+go 1.18
+
+retract v0.0.1
